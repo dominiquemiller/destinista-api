@@ -3,5 +3,5 @@ module.exports = (app) => {
 
     // gamerInfo routes
     app.route('/gamerInfo')
-       .get(gamerInfo.get_info);
+       .post(gamerInfo.sign_in);
 }

@@ -1,3 +1,4 @@
-exports.get_info = (req, res) => {
-    res.json('i am working');
+exports.sign_in = (req, res) => {
+  console.log(req.body);      // your JSON
+  res.send(req.body);
 };

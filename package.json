@@ -1,0 +1,22 @@
+{
+  "name": "destinista-api",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dominiquemiller/destinista-api.git"
+  },
+  "keywords": [
+    "destiny"
+  ],
+  "author": "dominique miller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dominiquemiller/destinista-api/issues"
+  },
+  "homepage": "https://github.com/dominiquemiller/destinista-api#readme"
+}

@@ -30,3 +30,5 @@ routes(app);
 app.listen(port);
 
 console.log(`Destinista API started on port ${port}`, corsOptions);
+
+module.exports = app;

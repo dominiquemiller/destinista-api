@@ -10,7 +10,7 @@ let origin_url = (environment) => {
    if (environment === 'development') {
        return 'http://localhost:4200'; 
    } else if (environment === 'production') {
-       return 'https://destinista.herokuapp.com/';
+       return 'https://destinista.herokuapp.com';
    }
 }
 let corsOptions = {

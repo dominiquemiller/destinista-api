@@ -29,4 +29,6 @@ routes(app);
 
 app.listen(port);
 
-console.log(`Destinista API started on port ${port}`, corsOptions);
+console.log(`Destinista API started on port ${port}`);
+
+module.exports = app;

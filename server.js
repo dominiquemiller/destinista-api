@@ -6,6 +6,12 @@ const environment = process.env.NODE_ENV;
 let bodyParser = require('body-parser');
 let cors = require('cors');
 
+// load local .env file
+if (environment === 'development') {
+    var env = require('node-env-file');
+    env('./.env');
+}
+
 let origin_url = (environment) => {
    if (environment === 'development') {
        return 'http://localhost:4200'; 

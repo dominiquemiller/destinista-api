@@ -1,3 +1,10 @@
+let getSummary = require('../services/gamersummary');
+const APIKEY = process.env.BUNGIE;
+
 exports.sign_in = (req, res) => {
-  res.send(req.body);
+  let gamer = req.body;
+
+  getSummary(gamer.network, gamer.tag, APIKEY)
+    .then( (data) => res.send(data))
+    .catch( (error) => res.send(error));
 };

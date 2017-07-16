@@ -24,12 +24,12 @@
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
     "express": "^4.15.3",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "jasmine": "^2.6.0",
     "jasmine-supertest": "^1.0.0",
-    "request": "^2.81.0",
     "supertest": "^3.0.0"
   }
 }

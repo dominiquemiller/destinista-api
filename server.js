@@ -23,10 +23,16 @@ let corsOptions = {
     optionsSuccessStatus: 200
 };
 
+// express config options
 app.use(cors(corsOptions));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+  res.header("Content-Type",'application/json');
+  next();
+});
 
 const routes = require('./api/routes/gamerInfoRoutes.js');
 // register routes with server

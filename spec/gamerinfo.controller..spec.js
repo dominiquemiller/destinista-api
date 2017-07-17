@@ -9,7 +9,7 @@ describe('gamerInfoController', () => {
        superTest(app).post('/gamerinfo')
                       .send(req_body)
                       .expect('Content-Type', /json/)
-                      .expect(200, req_body)
+                      .expect(200)
                       .end(tellJasmineDone(doneMock)); 
 
     });

@@ -2,7 +2,7 @@
   "name": "destinista-api",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jasmine",
     "start": "node server.js"
@@ -24,7 +24,8 @@
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
     "express": "^4.15.3",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "yarn": "^0.27.5"
   },
   "devDependencies": {
     "jasmine": "^2.6.0",

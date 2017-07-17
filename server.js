@@ -1,5 +1,4 @@
 let express = require('express');
-let https = require('https');
 let app = express();
 const port = process.env.PORT || 3000;
 const environment = process.env.NODE_ENV;

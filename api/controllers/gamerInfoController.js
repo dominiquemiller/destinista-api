@@ -1,4 +1,4 @@
-let getSummary = require('../services/gamersummary');
+let getSummary = require('../services/gamersummary.service');
 const APIKEY = process.env.BUNGIE;
 
 exports.sign_in = (req, res) => {

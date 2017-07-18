@@ -25,3 +25,11 @@ exports.sign_in = (req, res) => {
         
     })
 };
+
+exports.gamer_summary = (req, res) => {
+  let gamer = req.body;
+
+  getSummary(gamer.network, gamer.membershipId, APIKEY)
+    .then(res.send(body))
+    .catch(res.send(error));
+};

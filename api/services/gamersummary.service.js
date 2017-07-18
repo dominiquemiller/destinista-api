@@ -1,11 +1,10 @@
 let request = require('request');
 
-module.exports = (network, tag, apiKey) => {
+module.exports = (network, membershipId, apiKey) => {
   return new Promise( (resolve, reject) => {
-    const memberIdUrl = `http://www.bungie.net/Platform/Destiny/${network}/Stats/GetMembershipIdByDisplayName/${tag}/`; 
 
     // api request options
-    let  options= (url, apikey) => { 
+    let  options = (url, apikey) => { 
         return {
                 method: 'GET',
                 url: url,
@@ -14,30 +13,18 @@ module.exports = (network, tag, apiKey) => {
                     }
                 }
     };
-    // api call to get membershipId
-    request(options(memberIdUrl, apiKey), (error, response, body) => {
+    
+    // api call to get account summary
+    const accountUrl = `http://www.bungie.net/Platform/Destiny/${network}/Account/${membershipId}/Summary/`; 
+
+    request(options(accountUrl, apiKey), (error, response, body) => {
         if (error) {
             reject(error);
         } else {
-            const jsonBody = JSON.parse(body)
-            summary(network, jsonBody.Response);
+            resolve(body);
         }
         
     })
-    // api call to get account summary
-    let summary = (network, membershipId) => {
-        const accountUrl = `http://www.bungie.net/Platform/Destiny/${network}/Account/${membershipId}/Summary/`; 
-
-        request(options(accountUrl, apiKey), (error, response, body) => {
-            if (error) {
-                reject({ "err": error });
-            } else {
-                resolve(body);
-            }
-        
-        })
-    }
-
 
   })
 

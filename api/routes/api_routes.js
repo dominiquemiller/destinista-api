@@ -15,5 +15,8 @@ module.exports = (app) => {
     
     app.route('/item')
        .post(character.inventoryItem);
+
+    app.route('/progression')
+       .post(character.progression);
     
 }

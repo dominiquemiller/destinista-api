@@ -62,7 +62,8 @@ exports.queryManifest = (tableName, hashes) => {
 
 		db.each(query, function(err, row){
 			if(err) throw err;
-            records = [ ...records, row];
+			let parsed = JSON.parse(row.json);
+            records = [ ...records, parsed];
         }, function(err, count){ 
             resolve(records);
         });

@@ -43,9 +43,8 @@ exports.getManifest = () => {
 
 }
 
-//queries manifes.content, can be modified to accept parameters
-//mostly just to demo that this can use the .content file 
-//as a sqlite db for queries
+// query manifest.content file with sqlite3 
+// returns promise with records if found
 exports.queryManifest = (tableName, hashes) => {
   return new Promise( (resolve, reject) => {
 	let db = new sqlite.Database('manifest.content');
@@ -54,17 +53,16 @@ exports.queryManifest = (tableName, hashes) => {
     let values = hashes.reduce( (sum, hash) => {
         return sum + "," + hash;
     });
-    // returned array of records
-    let records = [];
+
+	let records = [];
 
 	 db.serialize(() => {
 	    	
-		let query = `SELECT json FROM ${tableName} WHERE id & 4294967296 IN (${values}) OR id IN (${values})`;
+		let query = `SELECT json FROM ${tableName} WHERE id + 4294967296 IN (${values}) OR id IN (${values})`;
 
 		db.each(query, function(err, row){
 			if(err) throw err;
             records = [ ...records, row];
-            // console.log(records);
         }, function(err, count){ 
             resolve(records);
         });

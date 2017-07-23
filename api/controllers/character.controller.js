@@ -1,4 +1,5 @@
 let request = require('request');
+let inventoryService = require('../services/inventory.service');
 const APIKEY = process.env.BUNGIE;
 
 exports.inventory = (req, res) => {
@@ -19,7 +20,9 @@ exports.inventory = (req, res) => {
         if (error) {
           res.send(error);
         } else {
-          res.send(body);
+          let response = JSON.parse(body);
+          inventoryService(response.Response.data.items)
+             .then((items) => { res.send(items)});
         }
         
     })
@@ -43,6 +46,7 @@ exports.inventoryItem = (req, res) => {
         if (error) {
           res.send(error);
         } else {
+          
           res.send(body);
         }
         

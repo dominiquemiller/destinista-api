@@ -2,7 +2,7 @@ let getSummary = require('../services/gamersummary.service');
 let request = require('request');
 const APIKEY = process.env.BUNGIE;
 
-exports.sign_in = (req, res) => {
+exports.signIn = (req, res) => {
   let gamer = req.body;
 
   const memberIdUrl = `http://www.bungie.net/Platform/Destiny/${gamer.network}/Stats/GetMembershipIdByDisplayName/${gamer.tag}/`; 
@@ -26,7 +26,7 @@ exports.sign_in = (req, res) => {
     })
 };
 
-exports.gamer_summary = (req, res) => {
+exports.gamerSummary = (req, res) => {
   let gamer = req.body;
 
   getSummary(gamer.network, gamer.membershipId, APIKEY)

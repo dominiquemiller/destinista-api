@@ -1,5 +1,6 @@
 let request = require('request');
 let inventoryService = require('../services/inventory.service');
+let activityService = require('../services/activity.service');
 const APIKEY = process.env.BUNGIE;
 
 exports.inventory = (req, res) => {
@@ -58,10 +59,10 @@ exports.inventoryItem = (req, res) => {
     })
 }
 
-exports.progression = (req, res) => {
+exports.activityStats = (req, res) => {
     const body = req.body;
 
-    let url = `http://www.bungie.net/Platform/Destiny/${body.network}/Account/${body.membershipId}/Character/${body.characterId}/Inventory/${body.itemId}/`; 
+    let url = `http://www.bungie.net/Platform/Destiny/Stats/AggregateActivityStats/${body.network}/${body.membershipId}/${body.characterId}/` 
     
     // api request options
     let options =   {
@@ -76,7 +77,31 @@ exports.progression = (req, res) => {
         if (error) {
           res.send(error);
         } else {
-          
+          let response = JSON.parse(body);
+          activityService(response.Response.data.activities)
+             .then((activities) => { res.send(activities)});
+        }
+        
+    })
+}
+
+exports.historicalStats = (req, res) => {
+    const body = req.body;
+
+    let url = `http://www.bungie.net/Platform/Destiny/Stats/${body.network}/${body.membershipId}/${body.characterId}/`;
+    // api request options
+    let options =   {
+                      method: 'GET',
+                      url: url,
+                      headers: {
+                        "X-API-Key": APIKEY
+                      }
+                    };
+
+    request(options, (error, response, body) => {
+        if (error) {
+          res.send(response, error);
+        } else {
           res.send(body);
         }
         

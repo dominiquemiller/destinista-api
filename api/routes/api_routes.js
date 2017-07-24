@@ -4,10 +4,10 @@ module.exports = (app) => {
 
     // gamerInfo routes
     app.route('/sign_in')
-       .post(gamerInfo.sign_in);
+       .post(gamerInfo.signIn);
 
     app.route('/gamer_summary')
-       .post(gamerInfo.gamer_summary);
+       .post(gamerInfo.gamerSummary);
     
     // character routers
     app.route('/inventory')
@@ -16,7 +16,10 @@ module.exports = (app) => {
     app.route('/item')
        .post(character.inventoryItem);
 
-    app.route('/progression')
-       .post(character.progression);
+    app.route('/activity_stats')
+       .post(character.activityStats);
+    
+    app.route('/historical_stats')
+       .post(character.historicalStats);
     
 }

@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-const routes = require('./api/routes/gamerInfoRoutes.js');
+const routes = require('./api/routes/api_routes.js');
 // register routes with server
 routes(app);
 

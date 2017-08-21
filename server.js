@@ -4,6 +4,10 @@ const port = process.env.PORT || 3000;
 const environment = process.env.NODE_ENV;
 let bodyParser = require('body-parser');
 let cors = require('cors');
+var expressWs = require('express-ws');
+
+//enable websockets
+expressWs(app);
 
 // load local .env file
 if (environment === 'development') {

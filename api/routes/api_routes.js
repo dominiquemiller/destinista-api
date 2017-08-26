@@ -23,6 +23,6 @@ module.exports = (app) => {
     app.route('/historical_stats')
        .post(character.historicalStats);
 
-    app.ws('/chat-room', chatRoom.join);
+    app.route('/chat-room', chatRoom.join);
     
 }

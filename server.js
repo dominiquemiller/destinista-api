@@ -4,10 +4,7 @@ const port = process.env.PORT || 3000;
 const environment = process.env.NODE_ENV;
 let bodyParser = require('body-parser');
 let cors = require('cors');
-var expressWs = require('express-ws');
-
-//enable websockets
-expressWs(app);
+const io = require('socket.io').listen(app.listen(port));
 
 // load local .env file
 if (environment === 'development') {
@@ -42,7 +39,9 @@ const routes = require('./api/routes/api_routes.js');
 // register routes with server
 routes(app);
 
-app.listen(port);
+//connect to client app
+const socketRoutes = require('./api/routes/socket_routes.js');
+io.on('connection', (socket) => socketRoutes(socket, io) );  
 
 console.log(`Destinista API started on port ${port}`);
 

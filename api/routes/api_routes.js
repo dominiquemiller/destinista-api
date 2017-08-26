@@ -1,6 +1,7 @@
 module.exports = (app) => {
     let gamerInfo = require('../controllers/gamerInfo.controller');
     let character = require('../controllers/character.controller');
+    let chatRoom = require('../controllers/chat-room.controller');
 
     // gamerInfo routes
     app.route('/sign_in')
@@ -21,5 +22,7 @@ module.exports = (app) => {
     
     app.route('/historical_stats')
        .post(character.historicalStats);
+
+    app.route('/chat-room', chatRoom.join);
     
 }
